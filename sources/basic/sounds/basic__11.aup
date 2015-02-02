@@ -1,0 +1,38 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="basic__11_data" version="1.3.0" audacityversion="2.0.5" sel0="8.8700226757" sel1="8.8700226757" vpos="0" h="3.1463038549" zoom="86.1328125000" rate="44100.0">
+	<tags/>
+	<wavetrack name="Audio Track" channel="2" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="0.00000000">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="159760">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000cf2.au" len="159760" min="-1.022488" max="1.076882" rms="0.205675"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Audio Track" channel="2" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="1" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="3.49267574">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="247376">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000afd.au" len="247376" min="-1.054292" max="1.070979" rms="0.199131"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Audio Track" channel="2" linked="0" mute="0" solo="0" height="150" minimized="0" isSelected="0" rate="44100" gain="1.0" pan="0.0">
+		<waveclip offset="8.97210884">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="288656">
+				<waveblock start="0">
+					<simpleblockfile filename="e0000646.au" len="144328" min="-1.040985" max="1.06927" rms="0.234569"/>
+				</waveblock>
+				<waveblock start="144328">
+					<simpleblockfile filename="e0000786.au" len="144328" min="-1.033334" max="1.031505" rms="0.167214"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>
