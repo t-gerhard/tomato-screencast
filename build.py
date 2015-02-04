@@ -13,8 +13,8 @@ basedir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()
 
 def avconv(inputfilename, outputfilename):
     cmd = ['avconv', '-i', inputfilename, outputfilename]
-    cmd = " ".join(cmd)
-    process = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    print " ".join(cmd)
+    process = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     for c in iter(lambda: process.stdout.read(1), ''):
         sys.stdout.write(c)
     errcode = process.returncode
@@ -41,6 +41,7 @@ class ScreencastBuilder:
 
     #convert the video
     def _create_video_format(self, form):
+        print "Converting to %s" % form
         input = self.input_video_filename
         (outputfilename, _) = os.path.splitext(os.path.basename(input))
         outputfilename += (".%s" % form)
@@ -58,6 +59,7 @@ class ScreencastBuilder:
     def _copy_tracks(self):
         for track in self.tracks:
             trackfilename = os.path.basename(track['filename'])
+            print "Copying track %s" % trackfilename
             shutil.copy(track['filename'],os.path.join(self.media_dir, trackfilename))
             desc_entry={'src': trackfilename, 'default': track['default'], 'kind': track['kind']}
             desc_entry.update(track['data'])
@@ -67,13 +69,16 @@ class ScreencastBuilder:
     def _copy_downloads(self):
         for dl in self.downloads:
             filename = os.path.basename(dl['filename'])
+            print "Copying download %s" % filename
             shutil.copy(dl['filename'], os.path.join(self.media_dir, filename))
             self.descriptor_content['downloads'].append({'title': dl['title'], 'src': filename})
 
     #write the descriptor file. should be the final action.
     def _write_descriptor(self):
-        with open(os.path.join(self.target_dir, "%s.json" % key)) as f:
+        print "Writing descriptor file"
+        with open(os.path.join(self.target_dir, "%s.json" % key), "w+") as f:
             f.write(json.dumps(self.descriptor_content))
+        print "Done."
 
 
 
@@ -109,8 +114,9 @@ class ScreencastBuilder:
 
 
 def build_screencast(key, target_dir):
+    print "Creating '%s' at '%s'" % (key, target_dir)
     screencast_root = os.path.join(basedir, "sources", key)
-    with open(os.path.join(screencast_root, "%s.json" % key)) as f:
+    with open(os.path.join(screencast_root, "%s.json" % key), "r") as f:
         descriptor = json.loads(f.read())
     video_filename = os.path.join(screencast_root, descriptor['video_file'])
     builder = ScreencastBuilder(key=key, title=descriptor['title'], description=descriptor['description'], input_video_file=video_filename, target_dir=target_dir)
