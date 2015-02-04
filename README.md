@@ -9,7 +9,7 @@ This contains all sources, and the compiled versions of these (i.e., video files
 
 In this directory, there is a json file of the same name as its directory, The descriptor file. This lists all files which will be included in the published version. The descriptor is of the format:
 
-´´´
+```
 {
   "title": "Human-Readable screencast title",
   "description": "description text for the screencast. What is this about?",
@@ -17,7 +17,7 @@ In this directory, there is a json file of the same name as its directory, The d
   "tracks": [], #undefined. Will include some tracks like chapters or subtitles
   "downloads": [] #undefined. Will include files used by the tutorial for the user to download
 }
-´´´
+```
 
 ## build.py
 Depends on the avconv command to be installed on the computer.
@@ -26,7 +26,7 @@ usage: build.py -i [directory in sources] -t [target directory]
 ## the output of the builder
 
 It creates a directory containing all media for each screencast. It additionally creates a descriptor file in the following format:
-´´´
+```
 {
   "title": "Basic Usage",
   "description": "Create and start your first topology.",
@@ -37,4 +37,4 @@ It creates a directory containing all media for each screencast. It additionally
   "tracks": [], #undefined
   "downloads": [] #undefined
 }
-´´´
+```
